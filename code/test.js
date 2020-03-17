@@ -28,26 +28,26 @@ function sumOfMultiples() {
 }
 
 
-console.log(sumOfMultiples())
+// console.log(sumOfMultiples())
 function omniPoller(queryStatus, successCallback) {
     // Implement your solution here
-    let n = 0
-    const fn = (i)=>{
+    const fn = (i = 0)=>{
+        console.log(i)
         setTimeout( ()=>{
             if(i){
                 if( queryStatus()){
                     successCallback()
                 }else{
                     i++
-                    fn(i)
+                    return  fn(i)
                 }
             }else{
                 i++
-                fn(i)
+                return fn(i)
             }
         },Math.pow(1.5,i)*1000)
     }
-    fn(n)
+    fn()
 }
 /*function omniPoller(queryStatus, successCallback) {
     // Implement your solution here
