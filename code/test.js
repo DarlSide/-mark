@@ -31,6 +31,7 @@ function sumOfMultiples() {
 // console.log(sumOfMultiples())
 function omniPoller(queryStatus, successCallback) {
     // Implement your solution here
+    'use strict'
     const fn = (i = 0)=>{
         console.log(i)
         setTimeout( ()=>{
