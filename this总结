@@ -2,7 +2,7 @@
 非严格模式下this指向window; 在use strict指明严格模式的情况下就是undefined  
 ####场景2：上下文对象调用中
 this指向最后调用它的对象
-```$xslt
+```javascript
 const o1 = {
     text: 'o1',
     fn: function() {
