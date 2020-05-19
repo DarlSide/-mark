@@ -13,21 +13,24 @@
  - renderMixin(Vue)：_render $nextTick
  
 2.$mount 挂载组件
+ - 创建根组件，创建一个Watcher,与更新函数进行挂钩
  - 优先级render/template(需编译)/dom  最终挂载的还是render
-3.compile 编译 vue-loader
+3_.compile 编译 vue-loader
  - parse: 解析指令和模板语法生成AST
  - optimize: 标记静态节点，diff时略过/渲染树不需要创建新节点
  - generate：把AST转成render
-4.虚拟dom树/存入监听器
+4.render生成虚拟dom树/存入监听器（Watcher）
+ - 执行渲染函数时，会进行依赖收集,当依赖变化时，通知watcher进行更新
 4_.watcher 监听器，数据修改后通知watcher进行修改
-5.diff算法,比较DOM树的差异 patch(dom操作) 
+5.diff算法,比较DOM树的差异,patch(dom操作)
+ - 通过diff算法比较出修改的部分，就不用更新整个组件，达到节约性能的目的
  - 同层级进行,广度优先,O(n)
  - 判断增删改
  - 根据tagName 和 key判断
    - 类型相同时 判断属性，文本，子节点是否更新  
    - 字节点重排 new/old + start/end + index
    
-6.更新dom 
+6.更新dom (真实与虚拟dom是映射关系)
 
 ###数据响应
 1.数据拦截(Object.defineProperty/Proxy)
