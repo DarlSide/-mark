@@ -43,3 +43,9 @@
 5.数组处理
  - 找出7个改变元素的操作[push,pop,shift,unshift,splice,sort,reverse]
  - 其他方式(操作数组内元素/添加删除属性)不会响应 需要set
+ ###虚拟dom
+ 1.解析成抽象语法树
+ 2.根据ast,用trasnform模块转化 @click.prevent.capture
+ 3.codeGeb 生成代码字符串 string
+ 4.使用new Function 把string 转换成可执行的函数
+ 5.这个函数执行后，返回的是vdon(静态标记配置)

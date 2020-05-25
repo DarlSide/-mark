@@ -1,6 +1,7 @@
 class KVue {
     constructor(options) {
         // 保存选项
+        console.log('KVue')
         this.$option = options
         this.$data = options.data
         //响应化处理
@@ -10,12 +11,13 @@ class KVue {
         //测试 触发依赖收集
         new Watcher(this, 'foo')
         this.foo
-        new Watcher(this, 'bar.mua')
-        this.bar.mua
+      /*  new Watcher(this, 'bar.mua')
+        this.bar.mua*/
 
     }
 
     observe(value) {
+        console.log('observe')
         if (!value || typeof value !== "object") {
             return;
         }
@@ -32,12 +34,14 @@ class KVue {
     }
 
     defineReactive(obj, key, val) {
+        console.log('defineReactive')
         //递归遍历 {mua:'mua'}
         this.observe(val)
         //定义一个Dep 每个dep和data中的每个key 一对一关系
         const dep = new Dep()
         //对$data以及$data的后代的每一个属性进行监听
         //当前对象，当前属性，描述符
+        //拦截每一个Key
         Object.defineProperty(obj, key, {
             get() {
                 //依赖收集
@@ -70,6 +74,7 @@ class KVue {
 //管理所有Watcher
 class Dep {
     constructor() {
+        console.log('Dep')
         //用于存储依赖
         this.deps = []
     }
@@ -89,6 +94,7 @@ class Dep {
 class Watcher {
     //某个实例,和data里的key
     constructor(vm, key) {
+        console.log('Watcher')
         //创建实例时立刻将该实例只想Dep的静态属性
         Dep.target = this
         console.log('Dep.target',Dep.target)
